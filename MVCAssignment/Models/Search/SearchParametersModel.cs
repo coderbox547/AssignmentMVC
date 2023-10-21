@@ -7,10 +7,12 @@ namespace MVCAssignment.Models.Search
 {
     public class SearchParametersModel
     {
-        public SearchParametersModel() {
+        public SearchParametersModel()
+        {
             AvailableControlType = new List<SelectListItem>();
             AvailableDataType = new List<SelectListItem>();
             AvailableUsers = new List<SelectListItem>();
+            AvailableFieldNames= new List<SelectListItem>();
         }
 
         [Required]
@@ -22,11 +24,21 @@ namespace MVCAssignment.Models.Search
         [Required]
         public string FieldName { get; set; }
 
+
+        [JsonIgnore]
+        public IList<SelectListItem> AvailableFieldNames{ get; set; }
+
+        [Required]
+        public int SelectedFieldName { get; set; }
+
+
         [JsonIgnore]
         public IList<SelectListItem> AvailableDataType { get; set; }
 
         [Required]
         public int SelectedDataType { get; set; }
+
+
 
         [JsonIgnore]
         public IList<SelectListItem> AvailableControlType { get; set; }

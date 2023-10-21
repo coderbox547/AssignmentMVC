@@ -30,6 +30,14 @@ namespace MVCAssignment.Factories
 
             model.AvailableControlType = controlTypes.ToList();
 
+
+            IEnumerable<FieldNameEnum> fieldNameEnumValues = Enum.GetValues(typeof(FieldNameEnum)).Cast<FieldNameEnum>();
+            var fieldNames = from fieldName in fieldNameEnumValues
+                               select new SelectListItem() { Text = fieldName.ToString(), Value = ((int)fieldName).ToString() };
+
+            model.AvailableFieldNames = fieldNames.ToList();
+
+
             var allUsers = _userService.GetAllUsers().Select(u => new SelectListItem
             {
                 Text = u.UserName,

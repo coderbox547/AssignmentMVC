@@ -14,7 +14,7 @@
     <div class="row">
         <div>
             @Html.Label("UserName")
-            </div><div>
+        </div><div>
             @Html.DropDownListFor(m => m.SelectedUser, Model.AvailableUsers, "Select User")
         </div>
     </div>
@@ -23,7 +23,7 @@
         <div>
             @Html.Label("FieldName")
         </div><div>
-            @Html.TextAreaFor(m => m.FieldName)
+            @Html.DropDownListFor(m => m.SelectedFieldName, Model.AvailableFieldNames, "Select Field Name")
         </div>
     </div>
 

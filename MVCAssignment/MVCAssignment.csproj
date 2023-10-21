@@ -153,14 +153,16 @@
     <Compile Include="Controllers\ParameterController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Enums\ControlTypeEnum.cs" />
+    <Compile Include="Enums\FieldNameEnum.cs" />
     <Compile Include="Enums\DataTypeEnum.cs" />
     <Compile Include="Factories\ISearchModelFactory.cs" />
     <Compile Include="Factories\SearchModelFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Request\CreateParameterRequest.cs" />
     <Compile Include="Models\Request\UserFilterRequest.cs" />
-    <Compile Include="Models\Search\SearchParameterModel.cs" />
+    <Compile Include="Models\Response\Parameter.cs" />
     <Compile Include="Models\Search\SearchParametersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ParameterViewModel.cs" />

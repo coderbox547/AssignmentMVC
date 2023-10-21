@@ -7,6 +7,6 @@ namespace MVCAssignment.ViewModels
 {
     public class ParameterViewModel
     {
-        public List<Models.Search.SearchParameterModel> SearchParameters { get; set; }
+        public List<Models.Response.Parameter> SearchParameters { get; set; }
     }
 }

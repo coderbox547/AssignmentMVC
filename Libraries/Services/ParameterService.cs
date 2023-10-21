@@ -11,7 +11,8 @@ namespace Libraries.Services
 {
     public interface IParameterService
     {
-       void Add(int userId, string jsonString);
+        void Add(int userId, string jsonString);
+        Parameter Get(int userId);
     }
 
     public class ParameterService : IParameterService
@@ -26,8 +27,13 @@ namespace Libraries.Services
         public void Add(int userId, string jsonString)
         {
             Parameter entity = new Parameter { Json = jsonString, UserId = userId };
-            _context.SearchParameters.Add(entity);
+            _context.Parameters.Add(entity);
             _context.SaveChanges();
+        }
+
+        public Parameter Get(int userId)
+        {
+            return _context.Parameters.FirstOrDefault(x => x.UserId == userId);
         }
     }
 }

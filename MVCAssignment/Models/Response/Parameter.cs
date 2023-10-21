@@ -1,16 +1,12 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace MVCAssignment.Models.Search
+namespace MVCAssignment.Models.Response
 {
-    public class SearchParameterModel
+    public class Parameter
     {
-        public SearchParameterModel() {
-        }
-
-        //public string UserName { get; set; }
-
         public string FieldName { get; set; }
 
         public Enums.DataTypeEnum SelectedDataType { get; set; }

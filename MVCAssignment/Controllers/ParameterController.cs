@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Collections;
 using System.Collections.Generic;
 using Libraries.Services;
+using MVCAssignment.Models.Request;
 
 namespace MVCAssignment.Controllers
 {
@@ -27,31 +28,29 @@ namespace MVCAssignment.Controllers
             return View(model);
         }
 
-
         [HttpPost]
-        public ActionResult Create(SearchParametersModel model)
+        public ActionResult Create(CreateParameterRequest model)
         {
-            var userId = model.SelectedUser;
+            List<Models.Response.Parameter> parameters = new List<Models.Response.Parameter>();
 
-            List<SearchParameterModel> parameters = new List<SearchParameterModel>
+            foreach (var parameter in model.Parameters)
             {
-                new SearchParameterModel
+                parameters.Add(new Models.Response.Parameter
                 {
-                     FieldName=model.FieldName,
-                     MaskPattern=model.MaskPattern,
-                     MaxFieldLength=model.MaxFieldLength,
-                     MaxLimit=model.MaxLimit,
-                     MinLimit=model.MinLimit,
-                     Required=model.IsRequired?"required":string.Empty,
-                     SelectedControlType= (Enums.ControlTypeEnum) model.SelectedControlType,
-                     SelectedDataType= (Enums.DataTypeEnum)model.SelectedDataType
-                }
-            };
+                    FieldName = parameter.FieldName,
+                    MaskPattern = parameter.MaskPattern,
+                    MaxFieldLength = parameter.MaxFieldLength,
+                    MaxLimit = parameter.MaxLimit,
+                    MinLimit = parameter.MinLimit,
+                    Required = parameter.IsRequired ? "required" : string.Empty,
+                    SelectedControlType = (Enums.ControlTypeEnum)parameter.SelectedControlType,
+                    SelectedDataType = (Enums.DataTypeEnum)parameter.SelectedDataType
+                });
+            }
 
             var jsonString = JsonConvert.SerializeObject(parameters);
-            _parameterService.Add(userId, jsonString);
+            _parameterService.Add(model.UserId, jsonString);
             return View(model);
         }
-
     }
 }

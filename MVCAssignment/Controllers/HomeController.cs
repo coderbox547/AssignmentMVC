@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Libraries.Services;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,39 +10,28 @@ namespace MVCAssignment.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IParameterService _parameterService;
+
+        public HomeController(IParameterService parameterService)
+        {
+            _parameterService = parameterService;
+        }
+
         public ActionResult Index()
         {
-            // Get the list of the search parameter on the basis of the user
-            List<Models.Search.SearchParameterModel> searchParameters = new List<Models.Search.SearchParameterModel>();
-            searchParameters.Add(new Models.Search.SearchParameterModel
-            {
-                FieldName = "EmpCode",
-                SelectedControlType = Enums.ControlTypeEnum.TextBox,
-                SelectedDataType = Enums.DataTypeEnum.String,
-                MaskPattern = "[a-z]{3}[0-9]{4}",// "XXX9999",
-                MaxFieldLength = 7,
-                Required = "required"
-            });
-            searchParameters.Add(new Models.Search.SearchParameterModel
-            {
-                FieldName = "Seniority",
-                SelectedControlType = Enums.ControlTypeEnum.NumericTextBox,
-                SelectedDataType = Enums.DataTypeEnum.Numeric,
-                MaxFieldLength = 4,
-                MinLimit = 0,
-                MaxLimit = 3.5,
-            });
+            List<Models.Response.Parameter> retVal = new List<Models.Response.Parameter>();
 
-            searchParameters.Add(new Models.Search.SearchParameterModel
+            // Get the list of the search parameter on the basis of the user
+            var parameter = _parameterService.Get(userId: 1);
+
+            if (parameter != null)
             {
-                FieldName = "DOJ",
-                SelectedControlType = Enums.ControlTypeEnum.DateTime,
-                SelectedDataType = Enums.DataTypeEnum.DateTime,
-            });
+                retVal = JsonConvert.DeserializeObject<List<Models.Response.Parameter>>(parameter.Json);
+            }
 
             return View(new ViewModels.ParameterViewModel
             {
-                SearchParameters = searchParameters
+                SearchParameters = retVal
             });
         }
     }

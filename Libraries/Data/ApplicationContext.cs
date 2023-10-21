@@ -15,7 +15,7 @@ namespace Libraries.Data
            // Database.SetInitializer<ApplicationContext>(new DBInitializer());
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<Parameter> SearchParameters { get; set; }
+        public DbSet<Parameter> Parameters { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
