@@ -18,6 +18,13 @@ namespace MVCAssignment
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "SearchParameter",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Search", action = "Create" }
+            );
         }
+
+
     }
 }
