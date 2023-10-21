@@ -1,0 +1,49 @@
+﻿@model MVCAssignment.ViewModels.ParameterViewModel
+
+<h2>Search</h2>
+
+<form method="post" action="Submit">
+    <table cellpadding="0" cellspacing="0" border="1" width="50%">
+        @{ 
+            int index = 0;
+        }
+        @foreach (var parameter in Model.SearchParameters)
+        {
+
+            <tr>
+                <td>
+                    @parameter.FieldName
+                    <input type="hidden" name="data[@index].FieldName" value="@parameter.FieldName" />
+                </td>
+                <td>
+
+                    @{ switch (parameter.SelectedControlType)
+                        {
+                            case MVCAssignment.Enums.ControlTypeEnum.TextBox:
+                                <input type="text" name="data[@index].Value" maxlength="@parameter.MaxFieldLength" required="@parameter.Required" pattern="@parameter.MaskPattern" />
+                                break;
+
+                            case MVCAssignment.Enums.ControlTypeEnum.NumericTextBox:
+                                <input type="number"  name="data[@index].Value" min="@parameter.MinLimit" max="@parameter.MaxLimit" maxlength="=@parameter.MaxFieldLength" required="@parameter.Required" pattern="@parameter.MaskPattern" />
+                                break;
+
+                            case MVCAssignment.Enums.ControlTypeEnum.DateTime:
+                                <input type="date" name="data[@index].Value" required="@parameter.Required" />
+                                break;
+                        }
+                    }
+
+                </td>
+            </tr>
+{ index = index + 1;}
+    }
+
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Search" />
+            </td>
+        </tr>
+
+    </table>
+
+</form>

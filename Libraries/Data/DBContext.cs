@@ -10,7 +10,7 @@ namespace Libraries.Data
 {
     public class ApplicationContext : DbContext
     {
-        public ApplicationContext() : base("Data Source=DESKTOP-JMRIN0K\\SQLEXPRESS01;Initial Catalog=Assignment;Integrated Security=True;Persist Security Info=False;") {
+        public ApplicationContext() : base("Data Source=PC-PC\\SQLEXPRESS2014;Initial Catalog=Assignment;Integrated Security=True;Persist Security Info=False;") {
 
             Database.SetInitializer<ApplicationContext>(new DBInitializer());
         }

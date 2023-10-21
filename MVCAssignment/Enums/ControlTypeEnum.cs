@@ -2,9 +2,11 @@
 {
     public enum ControlTypeEnum
     {
-        TextBox = 0,
-        DateTime = 1,
-        DropDownList =2,
-        RadioButonList = 3
+        None = 0,
+        TextBox = 1,
+        NumericTextBox = 2,
+        DateTime = 3,
+        DropDownList = 4,
+        RadioButonList = 5
     }
 }
