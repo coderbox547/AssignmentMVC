@@ -1,0 +1,13 @@
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\bin\Debug\Libraries.dll
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\bin\Debug\Libraries.pdb
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\bin\Debug\EntityFramework.dll
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\bin\Debug\EntityFramework.SqlServer.dll
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\bin\Debug\EntityFramework.xml
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\bin\Debug\EntityFramework.SqlServer.xml
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\obj\Debug\Libraries.csproj.AssemblyReference.cache
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\obj\Debug\Libraries.Migrations.InitialDB.resources
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\obj\Debug\Libraries.csproj.GenerateResource.cache
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\obj\Debug\Libraries.csproj.CoreCompileInputs.cache
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\obj\Debug\Libraries.csproj.CopyComplete
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\obj\Debug\Libraries.dll
+D:\SampleForTest\Assignment\MVCAssignment\Libraries\obj\Debug\Libraries.pdb
