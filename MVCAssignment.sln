@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCAssignment", "MVCAssignm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Libraries", "Libraries\Libraries.csproj", "{045D4E89-84E2-44B5-8D14-41AEC31408BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{5BF5D61D-2487-44E6-9CC9-82609C085E74}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{045D4E89-84E2-44B5-8D14-41AEC31408BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{045D4E89-84E2-44B5-8D14-41AEC31408BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{045D4E89-84E2-44B5-8D14-41AEC31408BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BF5D61D-2487-44E6-9CC9-82609C085E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BF5D61D-2487-44E6-9CC9-82609C085E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BF5D61D-2487-44E6-9CC9-82609C085E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BF5D61D-2487-44E6-9CC9-82609C085E74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

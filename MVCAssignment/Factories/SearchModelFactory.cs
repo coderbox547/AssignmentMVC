@@ -1,6 +1,6 @@
 ﻿using MVCAssignment.Enums;
 using MVCAssignment.Models.Search;
-using Libraries.Services.Search;
+using Libraries.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +10,10 @@ namespace MVCAssignment.Factories
 {
     public class SearchModelFactory : ISearchModelFactory
     {
-        private readonly ISearchService _serachService;
-        public SearchModelFactory(ISearchService searchService)
+        private readonly IUserService _userService;
+        public SearchModelFactory(IUserService userService)
         {
-            _serachService = searchService;
+            _userService = userService;
         }
 
         public void PrepareSearchParameterModel(SearchParametersModel model)
@@ -30,7 +30,7 @@ namespace MVCAssignment.Factories
 
             model.AvailableControlType = controlTypes.ToList();
 
-            var allUsers = _serachService.GetAllUsers().Select(u => new SelectListItem
+            var allUsers = _userService.GetAllUsers().Select(u => new SelectListItem
             {
                 Text = u.UserName,
                 Value = u.UserId.ToString()

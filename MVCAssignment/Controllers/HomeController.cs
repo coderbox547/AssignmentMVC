@@ -10,21 +10,38 @@ namespace MVCAssignment.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
+            // Get the list of the search parameter on the basis of the user
+            List<Models.Search.SearchParameterModel> searchParameters = new List<Models.Search.SearchParameterModel>();
+            searchParameters.Add(new Models.Search.SearchParameterModel
+            {
+                FieldName = "EmpCode",
+                SelectedControlType = Enums.ControlTypeEnum.TextBox,
+                SelectedDataType = Enums.DataTypeEnum.String,
+                MaskPattern = "[a-z]{3}[0-9]{4}",// "XXX9999",
+                MaxFieldLength = 7,
+                Required = "required"
+            });
+            searchParameters.Add(new Models.Search.SearchParameterModel
+            {
+                FieldName = "Seniority",
+                SelectedControlType = Enums.ControlTypeEnum.NumericTextBox,
+                SelectedDataType = Enums.DataTypeEnum.Numeric,
+                MaxFieldLength = 4,
+                MinLimit = 0,
+                MaxLimit = 3.5,
+            });
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            searchParameters.Add(new Models.Search.SearchParameterModel
+            {
+                FieldName = "DOJ",
+                SelectedControlType = Enums.ControlTypeEnum.DateTime,
+                SelectedDataType = Enums.DataTypeEnum.DateTime,
+            });
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(new ViewModels.ParameterViewModel
+            {
+                SearchParameters = searchParameters
+            });
         }
     }
 }

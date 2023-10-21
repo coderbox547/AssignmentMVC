@@ -1,4 +1,4 @@
-﻿using Libraries.Domain.Users;
+﻿using Libraries.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -14,16 +14,16 @@ namespace Libraries.Data
 
            // Database.SetInitializer<ApplicationContext>(new DBInitializer());
         }
-        public DbSet<Users> Users { get; set; }
-        public DbSet<SearchParameters> SearchParameters { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Parameter> SearchParameters { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-            builder.Entity<Users>().HasKey(x => x.UserId);
-            builder.Entity<Users>().HasIndex(x => x.UserName).IsUnique();
-            builder.Entity<Users>().HasIndex(x => x.EmpCode).IsUnique();
+            builder.Entity<User>().HasKey(x => x.UserId);
+            builder.Entity<User>().HasIndex(x => x.UserName).IsUnique();
+            builder.Entity<User>().HasIndex(x => x.EmpCode).IsUnique();
 
-            builder.Entity<SearchParameters>().HasKey(x => x.Id);
+            builder.Entity<Parameter>().HasKey(x => x.Id);
             base.OnModelCreating(builder);
         }
     }

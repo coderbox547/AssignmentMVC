@@ -1,5 +1,5 @@
 using MVCAssignment.Factories;
-using Libraries.Services.Search;
+using Libraries.Services;
 using System.Web.Mvc;
 using Unity;
 using Unity.Mvc5;
@@ -21,7 +21,8 @@ namespace MVCAssignment
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
             container.RegisterType<ISearchModelFactory, SearchModelFactory>();
-            container.RegisterType<ISearchService, SearchService>();
+            container.RegisterType<IUserService, UserService>();
+            container.RegisterType<IParameterService, ParameterService>();
             container.RegisterType<DbContext, ApplicationContext>();
 
         }

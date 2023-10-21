@@ -9,7 +9,7 @@ namespace MVCAssignment.Models.Search
         public SearchParameterModel() {
         }
 
-        public string UserName { get; set; }
+        //public string UserName { get; set; }
 
         public string FieldName { get; set; }
 

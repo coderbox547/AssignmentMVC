@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
@@ -44,7 +44,7 @@ Thumbs.db
 *.mp4
 *.png
 *.png
-=======
+
 
 Services/bin/Debug/System.Web.Mvc.xml
 Services/bin/Debug/System.Web.Razor.dll
@@ -65,4 +65,4 @@ Services/obj/Debug/Services.csproj.CoreCompileInputs.cache
 Services/obj/Debug/Services.csproj.FileListAbsolute.txt
 Services/obj/Debug/Services.dll
 Services/obj/Debug/Services.pdb
->>>>>>> 2e8d6c0e5d9ecd43bf6c8f9af6ad9b54ee4101e6
+

@@ -1,0 +1,97 @@
+﻿@using MVCAssignment.Models.Search
+@model SearchParametersModel
+
+@{
+    ViewBag.Title = "Search Parameter Entry Screen";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+</div>
+
+@using (Html.BeginForm("Create", "Parameter", FormMethod.Post))
+{
+    <div class="row">
+        <div>
+            @Html.Label("UserName")
+            </div><div>
+            @Html.DropDownListFor(m => m.SelectedUser, Model.AvailableUsers, "Select User")
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            @Html.Label("FieldName")
+        </div><div>
+            @Html.TextAreaFor(m => m.FieldName)
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            @Html.Label("DataType")
+        </div><div>
+            @Html.DropDownListFor(m => m.SelectedDataType, Model.AvailableDataType, "Select DataType")
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div>
+            @Html.Label("Control Type")
+        </div><div>
+            @Html.DropDownListFor(m => m.SelectedControlType, Model.AvailableControlType, "Select ControlType")
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div>
+            @Html.Label("Constraint(IsReuired)")
+        </div><div>
+            @Html.CheckBoxFor(m => m.IsRequired)
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div>
+
+            @Html.Label("Max Length")
+        </div><div>
+            @Html.TextAreaFor(m => m.MaxFieldLength)
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            @Html.Label("Min Limit")
+        </div><div>
+            @Html.TextAreaFor(m => m.MinLimit)
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div>
+            @Html.Label("Max Limit")
+        </div><div>
+            @Html.TextAreaFor(m => m.MaxLimit)
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div>
+            @Html.Label("Mask Pattern")
+        </div><div>
+            @Html.TextAreaFor(m => m.MaskPattern)
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            <input type="submit" value="Submit" id="btnSubmit" name="submit" />
+        </div>
+    </div>
+}
