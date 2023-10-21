@@ -12,7 +12,7 @@ namespace Libraries.Data
     {
         public ApplicationContext() : base("Data Source=DESKTOP-JMRIN0K\\SQLEXPRESS01;Initial Catalog=Assignment;Integrated Security=True;Persist Security Info=False;") {
 
-            Database.SetInitializer<ApplicationContext>(new DBInitializer());
+           // Database.SetInitializer<ApplicationContext>(new DBInitializer());
         }
         public DbSet<Users> Users { get; set; }
         public DbSet<SearchParameters> SearchParameters { get; set; }
