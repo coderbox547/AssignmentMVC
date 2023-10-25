@@ -1,97 +1,27 @@
-﻿
-@using MVCAssignment.Models.Search
+﻿@using MVCAssignment.Models.Search
 @model SearchParametersModel
-
-    <td>
-        @Html.DropDownListFor(m => m.SelectedFieldName, Model.AvailableFieldNames, "Select Field Name")
-    </td>
-    <td>
-        @Html.DropDownListFor(m => m.SelectedDataType, Model.AvailableDataType, "Select DataType")
-    </td>
-    <td>
-        @Html.DropDownListFor(m => m.SelectedControlType, Model.AvailableControlType, "Select ControlType")
-    </td>
-    <td>
+<tr class="form-data">
+    <td class="custom_input">
         @Html.CheckBoxFor(m => m.IsRequired)
     </td>
-    <td>
-        @Html.TextAreaFor(m => m.MaxFieldLength)
+    <td class="custom_select">
+        @Html.DropDownListFor(m => m.SelectedFieldName, Model.AvailableFieldNames, "Select Field Name")
     </td>
-    <td>
-        @Html.TextAreaFor(m => m.MinLimit)
+    <td class="custom_select">
+        @Html.DropDownListFor(m => m.SelectedDataType, Model.AvailableDataType, "Select DataType")
     </td>
-    <td>
-        @Html.TextAreaFor(m => m.MaxLimit)
+    <td class="custom_select">
+        @Html.DropDownListFor(m => m.SelectedControlType, Model.AvailableControlType, "Select ControlType")
     </td>
-    <td> @Html.TextAreaFor(m => m.MaskPattern)</td>
 
-@*<div class="form-data">
-    <div class="row">
-        <div>
-            @Html.Label("FieldName")
-        </div><div>
-           
-        </div>
-    </div>
-
-    <div class="row">
-        <div>
-            @Html.Label("DataType")
-        </div><div>
-          
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div>
-            @Html.Label("Control Type")
-        </div><div>
-            
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div>
-            @Html.Label("Constraint(IsReuired)")
-        </div><div>
-           
-        </div>
-    </div>
-
-    <div class="row">
-        <div>
-
-            @Html.Label("Max Length")
-        </div><div>
-           
-        </div>
-    </div>
-
-    <div class="row">
-        <div>
-            @Html.Label("Min Limit")
-        </div><div>
-           
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div>
-            @Html.Label("Max Limit")
-        </div><div>
-            
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div>
-            @Html.Label("Mask Pattern")
-        </div><div>
-           
-        </div>
-    </div>
-</div>*@
+    <td class="custom_textbox">
+        @Html.TextBoxFor(m => m.MaxFieldLength)
+    </td>
+    <td class="custom_textbox">
+        @Html.TextBoxFor(m => m.MinLimit)
+    </td>
+    <td class="custom_textbox">
+        @Html.TextBoxFor(m => m.MaxLimit)
+    </td>
+    <td class="custom_textbox"> @Html.TextBoxFor(m => m.MaskPattern)</td>
+</tr>

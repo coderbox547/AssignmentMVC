@@ -5,65 +5,63 @@
     ViewBag.Title = "Search Parameter Entry Screen";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-</div>
-<button id="addParameterButton">Add Parameter</button>
-
-
-<div class="row">
-    <div>
-        @Html.Label("UserName")
-    </div><div>
-        @Html.DropDownListFor(m => m.SelectedUser, Model.AvailableUsers, "Select User")
+<section class="app_card">
+    <div class="grid_header">
+        <div>
+            @Html.Label("UserName")
+            <div class="custom_select">
+                @Html.DropDownListFor(m => m.SelectedUser, Model.AvailableUsers, "Select User",new { id= "SelectedUser" })
+            </div>
+        </div>
+        <div>
+            <button id="addParameterButton" class="custom_btn">Add Parameter</button>
+        </div>
     </div>
-</div>
 
-<table class="form-">
-    <thead>
-        <tr>
-            <td>
-                Field Name
-            </td>
-            <td>
-                Datatype
-            </td>
-            <td>
-                Control Type
-            </td>
-            <td>
-                Is Required
-            </td>
-            <td>
-                MaxFieldLength
-            </td>
-            <td>
-                MinLimit
-            </td>
-            <td>
-                MaxLimit
-            </td>
-            <td> MaskPattern</td>
-        </tr>
-    </thead>
-    <tr  class="form-data">
-        @Html.Partial("_ParameterForm", Model)
-    </tr>
-    <tr id="renderParameterForm"  class="form-data">
-
-    </tr>
-</table>
-
-
-<!--<div id="renderParameterForm">-->
-    @*here we will adding form*@
-<!--</div>-->
-<div class="row">
     <div>
-        <button id="btnSubmit">Submit</button>
-    </div>
-</div>
+        <table class="table w-100 parameter_table" id="renderParameterForm">
+            <thead>
+                <tr>
+                    <th>
+                        Is Required
+                    </th>
+                    <th>
+                        Field Name
+                    </th>
+                    <th>
+                        Datatype
+                    </th>
+                    <th>
+                        Control Type
+                    </th>
 
+                    <th>
+                        MaxFieldLength
+                    </th>
+                    <th>
+                        MinLimit
+                    </th>
+                    <th>
+                        MaxLimit
+                    </th>
+                    <th> MaskPattern</th>
+                </tr>
+            </thead>
+            <tbody  id="renderParameterForm">
+                @*<tr class="form-data">
+                        @Html.Partial("_ParameterForm", Model)
+                    </tr>*@
+                @Html.Partial("_ParameterForm", Model)
+            </tbody>
+            @*<tr id="renderParameterForm" class="form-data">
+                </tr>*@
+        </table>
+    </div>
+
+    <div class="text-center">
+        <button id="btnSubmit" class="custom_btn">Submit</button>
+    </div>
+</section>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

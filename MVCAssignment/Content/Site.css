@@ -1,6 +1,10 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +25,43 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.app_card {
+    box-shadow: 0 8px 24px rgb(40 39 107 / 10%);
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+}
+
+.grid_header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:50px;
+}
+.grid_header label{
+    font-size:15px;
+}
+    .custom_btn {
+        background: #0930a8;
+        border: 0;
+        color: #fff;
+        padding: 7px 20px;
+        font-size: 15px;
+        font-weight: 400;
+        border-radius: 5px;
+    }
+        .custom_btn:hover {
+            background: #0e2776;
+        }
+.custom_select select, .custom_textbox input[type="text"] {
+    border: 1px solid #d2cece;
+    padding: 10px;
+    text-align: left;
+    width: 200px;
+    border-radius: 5px;
+}
+.parameter_table {
+
 }
