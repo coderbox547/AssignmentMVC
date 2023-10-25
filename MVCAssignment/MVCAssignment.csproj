@@ -161,6 +161,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Request\CreateParameterRequest.cs" />
+    <Compile Include="Models\Request\Parameter.cs" />
     <Compile Include="Models\Request\UserFilterRequest.cs" />
     <Compile Include="Models\Response\Parameter.cs" />
     <Compile Include="Models\Search\SearchParametersModel.cs" />

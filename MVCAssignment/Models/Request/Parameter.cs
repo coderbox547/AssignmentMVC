@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MVCAssignment.Models.Response
+namespace MVCAssignment.Models.Request
 {
     public class Parameter
     {

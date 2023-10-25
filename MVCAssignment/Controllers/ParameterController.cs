@@ -23,7 +23,7 @@ namespace MVCAssignment.Controllers
 
         public ActionResult Create()
         {
-            var model = new SearchParametersModel();
+            var model = new SearchParametersModel();    
             _searchModelFactory.PrepareSearchParameterModel(model);
             return View(model);
         }
@@ -31,11 +31,11 @@ namespace MVCAssignment.Controllers
         [HttpPost]
         public ActionResult Create(CreateParameterRequest model)
         {
-            List<Models.Response.Parameter> parameters = new List<Models.Response.Parameter>();
+            List<Models.Request.Parameter> parameters = new List<Models.Request.Parameter>();
 
             foreach (var parameter in model.Parameters)
             {
-                parameters.Add(new Models.Response.Parameter
+                parameters.Add(new Models.Request.Parameter
                 {
                     FieldName = parameter.FieldName,
                     MaskPattern = parameter.MaskPattern,
@@ -43,8 +43,8 @@ namespace MVCAssignment.Controllers
                     MaxLimit = parameter.MaxLimit,
                     MinLimit = parameter.MinLimit,
                     Required = parameter.IsRequired ? "required" : string.Empty,
-                    SelectedControlType = (Enums.ControlTypeEnum)parameter.SelectedControlType,
-                    SelectedDataType = (Enums.DataTypeEnum)parameter.SelectedDataType
+                    SelectedControlType = parameter.SelectedControlType,
+                    SelectedDataType = parameter.SelectedDataType
                 });
             }
 

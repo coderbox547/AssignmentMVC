@@ -14,7 +14,7 @@ namespace MVCAssignment.Models.Request
 
     public class ParameterModel
     {
-        public string FieldName { get; set; }
+        public Enums.FieldNameEnum FieldName { get; set; }
 
         public Enums.DataTypeEnum SelectedDataType { get; set; }
 
