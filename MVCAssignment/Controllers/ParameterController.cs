@@ -50,7 +50,7 @@ namespace MVCAssignment.Controllers
 
             var jsonString = JsonConvert.SerializeObject(parameters);
             _parameterService.Add(model.UserId, jsonString);
-            return View(model);
+            return Json(new { success = true });
         }
     }
 }

@@ -11,6 +11,7 @@
 
 @using (Html.BeginForm("Create", "Parameter", FormMethod.Post))
 {
+
     <div class="row">
         <div>
             @Html.Label("UserName")
@@ -94,4 +95,45 @@
             <input type="submit" value="Submit" id="btnSubmit" name="submit" />
         </div>
     </div>
+
 }
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            var formData = {
+                UserId: $("#SelectedUser").val(),
+                Parameters: [
+                    {
+                        FieldName: $("#SelectedFieldName").val(),
+                        SelectedDataType: $("#SelectedDataType").val(),
+                        SelectedControlType: $("#SelectedControlType").val(),
+                        IsRequired: $("#IsRequired").is(":checked"),
+                        MaxFieldLength: $("#MaxFieldLength").val(),
+                        MinLimit: $("#MinLimit").val(),
+                        MaxLimit: $("#MaxLimit").val(),
+                        MaskPattern: $("#MaskPattern").val()
+                    }
+                ]
+            };
+
+            $.ajax({
+                url: '/Parameter/Create',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function (result) {
+                    alert("data submit")
+                },
+                error: function (error) {
+                    alert(error)
+
+                }
+            });
+        });
+    });
+</script>
