@@ -50,7 +50,7 @@ namespace MVCAssignment.Controllers
             {
                 parameters.Add(new Models.Request.Parameter
                 {
-                    FieldName = parameter.FieldName.ToString(),
+                    FieldName = parameter.FieldName,
                     MaskPattern = parameter.MaskPattern,
                     MaxFieldLength = parameter.MaxFieldLength,
                     MaxLimit = parameter.MaxLimit,
