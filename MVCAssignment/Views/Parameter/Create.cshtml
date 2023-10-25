@@ -8,95 +8,62 @@
 <div class="jumbotron">
     <h1>ASP.NET</h1>
 </div>
+<button id="addParameterButton">Add Parameter</button>
 
-@using (Html.BeginForm("Create", "Parameter", FormMethod.Post))
-{
 
-    <div class="row">
-        <div>
-            @Html.Label("UserName")
-        </div><div>
-            @Html.DropDownListFor(m => m.SelectedUser, Model.AvailableUsers, "Select User")
-        </div>
+<div class="row">
+    <div>
+        @Html.Label("UserName")
+    </div><div>
+        @Html.DropDownListFor(m => m.SelectedUser, Model.AvailableUsers, "Select User")
     </div>
+</div>
 
-    <div class="row">
-        <div>
-            @Html.Label("FieldName")
-        </div><div>
-            @Html.DropDownListFor(m => m.SelectedFieldName, Model.AvailableFieldNames, "Select Field Name")
-        </div>
+<table class="form-">
+    <thead>
+        <tr>
+            <td>
+                Field Name
+            </td>
+            <td>
+                Datatype
+            </td>
+            <td>
+                Control Type
+            </td>
+            <td>
+                Is Required
+            </td>
+            <td>
+                MaxFieldLength
+            </td>
+            <td>
+                MinLimit
+            </td>
+            <td>
+                MaxLimit
+            </td>
+            <td> MaskPattern</td>
+        </tr>
+    </thead>
+    <tr  class="form-data">
+        @Html.Partial("_ParameterForm", Model)
+    </tr>
+    <tr id="renderParameterForm"  class="form-data">
+
+    </tr>
+</table>
+
+
+<!--<div id="renderParameterForm">-->
+    @*here we will adding form*@
+<!--</div>-->
+<div class="row">
+    <div>
+        <button id="btnSubmit">Submit</button>
     </div>
+</div>
 
-    <div class="row">
-        <div>
-            @Html.Label("DataType")
-        </div><div>
-            @Html.DropDownListFor(m => m.SelectedDataType, Model.AvailableDataType, "Select DataType")
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div>
-            @Html.Label("Control Type")
-        </div><div>
-            @Html.DropDownListFor(m => m.SelectedControlType, Model.AvailableControlType, "Select ControlType")
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div>
-            @Html.Label("Constraint(IsReuired)")
-        </div><div>
-            @Html.CheckBoxFor(m => m.IsRequired)
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div>
-
-            @Html.Label("Max Length")
-        </div><div>
-            @Html.TextAreaFor(m => m.MaxFieldLength)
-        </div>
-    </div>
-
-    <div class="row">
-        <div>
-            @Html.Label("Min Limit")
-        </div><div>
-            @Html.TextAreaFor(m => m.MinLimit)
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div>
-            @Html.Label("Max Limit")
-        </div><div>
-            @Html.TextAreaFor(m => m.MaxLimit)
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div>
-            @Html.Label("Mask Pattern")
-        </div><div>
-            @Html.TextAreaFor(m => m.MaskPattern)
-        </div>
-    </div>
-
-    <div class="row">
-        <div>
-            <input type="submit" value="Submit" id="btnSubmit" name="submit" />
-        </div>
-    </div>
-
-}
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -106,20 +73,24 @@
         $("#btnSubmit").click(function (e) {
             e.preventDefault();
             var formData = {
-                UserId: $("#SelectedUser").val(),
-                Parameters: [
-                    {
-                        FieldName: $("#SelectedFieldName").val(),
-                        SelectedDataType: $("#SelectedDataType").val(),
-                        SelectedControlType: $("#SelectedControlType").val(),
-                        IsRequired: $("#IsRequired").is(":checked"),
-                        MaxFieldLength: $("#MaxFieldLength").val(),
-                        MinLimit: $("#MinLimit").val(),
-                        MaxLimit: $("#MaxLimit").val(),
-                        MaskPattern: $("#MaskPattern").val()
-                    }
-                ]
+                UserId: $('#SelectedUser').val(),
+                Parameters: []
             };
+
+            $(".form-data").each(function () {
+                var data = {
+                    FieldName: $(this).find("[name$='FieldName']").val(),
+                    SelectedDataType: $(this).find("[name$='SelectedDataType']").val(),
+                    SelectedControlType: $(this).find("[name$='SelectedControlType']").val(),
+                    IsRequired: $(this).find("[name$='IsRequired']").is(":checked"),
+                    MaxFieldLength: $(this).find("[name$='MaxFieldLength']").val(),
+                    MinLimit: $(this).find("[name$='MinLimit']").val(),
+                    MaxLimit: $(this).find("[name$='MaxLimit']").val(),
+                    MaskPattern: $(this).find("[name$='MaskPattern']").val()
+                };
+                formData.Parameters.push(data);
+            });
+
 
             $.ajax({
                 url: '/Parameter/Create',
@@ -128,6 +99,7 @@
                 data: JSON.stringify(formData),
                 success: function (result) {
                     alert("data submit")
+                    location.reload()
                 },
                 error: function (error) {
                     alert(error)
@@ -135,5 +107,26 @@
                 }
             });
         });
+
+
+
+        function loadParameterForm() {
+            $.ajax({
+                url: '/Parameter/GetParameterForm',
+                type: 'GET',
+                success: function (data) {
+                    $('#renderParameterForm').append(data);
+                },
+                error: function () {
+                    alert('An error occurred while loading the form');
+                }
+            });
+        }
+
+        $('#addParameterButton').click(function () {
+            loadParameterForm();
+        });
+
+
     });
 </script>

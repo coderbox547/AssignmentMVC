@@ -21,12 +21,25 @@ namespace MVCAssignment.Controllers
             _parameterService = parameterService;
         }
 
-        public ActionResult Create()
+        private SearchParametersModel PrepareSearchParametersModel()
         {
             var model = new SearchParametersModel();    
             _searchModelFactory.PrepareSearchParameterModel(model);
+            return model;
+        }
+
+        public ActionResult Create()
+        {
+            var model = PrepareSearchParametersModel();
             return View(model);
         }
+
+        public ActionResult GetParameterForm()
+        {
+            var model = PrepareSearchParametersModel();
+            return PartialView("_ParameterForm", model);
+        }
+
 
         [HttpPost]
         public ActionResult Create(CreateParameterRequest model)
@@ -37,7 +50,7 @@ namespace MVCAssignment.Controllers
             {
                 parameters.Add(new Models.Request.Parameter
                 {
-                    FieldName = parameter.FieldName,
+                    FieldName = parameter.FieldName.ToString(),
                     MaskPattern = parameter.MaskPattern,
                     MaxFieldLength = parameter.MaxFieldLength,
                     MaxLimit = parameter.MaxLimit,
