@@ -1,0 +1,34 @@
+﻿@model List<UserResponseModel>
+
+@if (Model != null && Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>UserName</th>
+                <th>FName</th>
+                <th>LName</th>
+                <th>Department</th>
+                <th>Role</th>
+                <th>EmpCode</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td>@item.FName</td>
+                    <td>@item.LName</td>
+                    <td>@item.Department</td>
+                    <td>@item.Role</td>
+                    <td>@item.EmpCode</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No data available.</p>
+}

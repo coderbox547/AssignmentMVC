@@ -2,8 +2,7 @@
 
 <h2>Search</h2>
 
-@using (Html.BeginForm("Submit", "User", FormMethod.Post))
-{
+<form id="searchForm">
     <table cellpadding="0" cellspacing="0" border="1" width="50%">
         @{
             int index = 0;
@@ -41,10 +40,43 @@
 
         <tr>
             <td colspan="2">
-                <input type="submit" value="Search" />
+                <button type="submit">Submit</button>
             </td>
         </tr>
 
     </table>
 
-}
+</form>
+
+<div id="userData">
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#searchForm").submit(function (event) {
+            event.preventDefault();
+
+
+
+            // Serialize the form data
+            var formData = $(this).serialize();
+
+            
+
+            $.ajax({
+                type: "POST",
+                url: "/User/Submit/",
+                data: formData,
+                success: function (data) {
+                    console.log(data);
+                    $("#userData").html(data)
+                },
+                error: function () {
+                    console.error("Error occurred .");
+                }
+            });
+        });
+    });
+</script>
