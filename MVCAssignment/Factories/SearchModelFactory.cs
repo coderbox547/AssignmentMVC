@@ -5,6 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using MVCAssignment.Models.Request;
+using Libraries.Domain;
+using MVCAssignment.Models.Response;
+using System.Data.SqlClient;
+using System.Data.Entity;
+using Libraries.Data;
 
 namespace MVCAssignment.Factories
 {
@@ -47,5 +53,70 @@ namespace MVCAssignment.Factories
             model.AvailableUsers = allUsers.ToList();
 
         }
+        public List<UserResponseModel> PrepareSearchUsers(List<UserFilterRequest> data)
+        {
+            using (ApplicationContext dbContext = new ApplicationContext())
+            {
+                var parameters = new List<SqlParameter>();
+
+                var userNameParam = new SqlParameter("UserName", DBNull.Value);
+                var roleParam = new SqlParameter("Role", DBNull.Value);
+                var fNameParam = new SqlParameter("FName", DBNull.Value);
+                var lNameParam = new SqlParameter("LName", DBNull.Value);
+                var empCodeParam = new SqlParameter("EmpCode", DBNull.Value);
+                var departmentParam = new SqlParameter("Department", DBNull.Value);
+
+                foreach (var filter in data)
+                {
+                    if (!string.IsNullOrEmpty(filter.Value))
+                    {
+                        switch (filter.FieldName)
+                        {
+                            case "UserName":
+                                userNameParam = new SqlParameter("UserName", filter.Value);
+                                break;
+                            case "Role":
+                                roleParam = new SqlParameter("Role", filter.Value);
+                                break;
+                            case "FName":
+                                fNameParam = new SqlParameter("FName", filter.Value);
+                                break;
+                            case "LName":
+                                lNameParam = new SqlParameter("LName", filter.Value);
+                                break;
+                            case "EmpCode":
+                                empCodeParam = new SqlParameter("EmpCode", filter.Value);
+                                break;
+                            case "Department":
+                                departmentParam = new SqlParameter("Department", filter.Value);
+                                break;
+                        }
+                    }
+                }
+
+                parameters.Add(userNameParam);
+                parameters.Add(roleParam);
+                parameters.Add(fNameParam);
+                parameters.Add(lNameParam);
+                parameters.Add(empCodeParam);
+                parameters.Add(departmentParam);
+
+                var result = dbContext.Database.SqlQuery<UserResponseModel>("SearchUsers @UserName, @Role, @FName, @LName, @EmpCode, @Department", parameters.ToArray()).ToList();
+
+                return result;
+            }
+        }
     }
+
+
+
+
+
+
+
 }
+
+
+
+
+
